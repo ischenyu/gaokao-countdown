@@ -10,6 +10,8 @@ export default defineNuxtConfig({
     preset: 'node-server',
   },
 
+  modules: ['@edgeone/nuxt-pages'],
+
   runtimeConfig: {
     // 仅服务端可访问
     databaseUrl: '',
