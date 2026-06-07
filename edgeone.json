@@ -1,14 +1,8 @@
 {
+  "framework": "nuxt",
   "build": {
-    "command": "npm run build && mkdir -p .edgeone/cloud-functions/ssr-node && cp -r .output/server/* .edgeone/cloud-functions/ssr-node/ && cp -r .output/public .edgeone/assets",
-    "output": ".edgeone/assets",
+    "command": "npm run build",
+    "output": "dist",
     "nodeVersion": "20"
-  },
-  "functions": {
-    "runtime": "nodejs20.x",
-    "directory": ".edgeone/cloud-functions/ssr-node"
-  },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/.edgeone/cloud-functions/ssr-node/index.mjs" }
-  ]
+  }
 }
