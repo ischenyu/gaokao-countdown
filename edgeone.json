@@ -2,15 +2,8 @@
   "$schema": "https://edgeone.cloud.tencent.com/pages/schema.json",
   "build": {
     "command": "npm run build",
-    "output": ".output/public",
+    "output": ".edgeone/assets",
     "nodeVersion": "20"
   },
-  "framework": "nuxt",
-  "functions": {
-    "runtime": "nodejs20.x",
-    "directory": ".output/server"
-  },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/.output/server/index.mjs" }
-  ]
+  "framework": "nuxt"
 }
