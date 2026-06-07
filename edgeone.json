@@ -9,5 +9,8 @@
   "functions": {
     "runtime": "nodejs20.x",
     "directory": ".output/server"
-  }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/.output/server/index.mjs" }
+  ]
 }
