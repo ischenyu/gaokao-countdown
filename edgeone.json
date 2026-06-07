@@ -1,7 +1,7 @@
 {
   "$schema": "https://edgeone.cloud.tencent.com/pages/schema.json",
   "build": {
-    "command": "npm run build",
+    "command": "npm install --legacy-peer-deps && npm run build",
     "output": ".edgeone/assets",
     "nodeVersion": "20"
   },
