@@ -1,0 +1,392 @@
+/* ============================================================
+   高考倒计时 — 主样式表
+   设计基调：深色底 + 金色点缀 + 玻璃拟态 + 粒子动画
+   ============================================================ */
+
+/* ---- CSS 变量 ---- */
+:root {
+  --bg-deep: #07071a;
+  --bg-surface: rgba(255, 255, 255, 0.04);
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --border-card: rgba(212, 168, 83, 0.25);
+  --gold: #d4a853;
+  --gold-light: #f0d070;
+  --gold-dim: #a08040;
+  --text-primary: #f0ede8;
+  --text-secondary: #b0aca5;
+  --text-muted: #6b6760;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Noto Serif SC', 'STSong', 'SimSun', 'Songti SC', Georgia, serif;
+}
+
+/* ---- 重置 & 全局 ---- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ---- 粒子背景容器 ---- */
+.particle-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* ---- 主内容层 ---- */
+.main-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+}
+
+/* ---- 标题区 ---- */
+.hero {
+  text-align: center;
+  margin-top: 2vh;
+  margin-bottom: 20px;
+}
+
+.hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  background: linear-gradient(180deg, #f0d070 0%, #d4a853 50%, #a08040 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+}
+
+.hero__subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--text-secondary);
+  margin-top: 8px;
+  letter-spacing: 0.15em;
+}
+
+/* ---- 倒计时卡片 ---- */
+.countdown-section {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 500px) {
+  .countdown-grid {
+    gap: 8px;
+  }
+}
+
+.countdown-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 20px 10px 16px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+}
+
+.countdown-item__number {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-item__label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+.countdown-date {
+  text-align: center;
+  margin-top: 18px;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+}
+
+/* ---- 留言板区域 ---- */
+.board-section {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.board-section__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 28px;
+  letter-spacing: 0.08em;
+  position: relative;
+}
+
+.board-section__title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold-dim);
+  margin: 10px auto 0;
+  border-radius: 1px;
+}
+
+/* ---- 留言表单 ---- */
+.message-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 32px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+}
+
+.message-form__row {
+  margin-bottom: 14px;
+}
+
+.message-form__label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.message-form__input,
+.message-form__textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  transition: border-color 0.25s;
+  outline: none;
+}
+
+.message-form__input:focus,
+.message-form__textarea:focus {
+  border-color: var(--gold-dim);
+}
+
+.message-form__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.message-form__submit {
+  width: 100%;
+  padding: 12px 0;
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #1a1a1a;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.message-form__submit:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.message-form__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.message-form__error {
+  color: #e06060;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+.message-form__success {
+  color: #60c080;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+/* ---- 留言列表 ---- */
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.3s, transform 0.2s;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.message-card:hover {
+  border-color: var(--border-card);
+  transform: translateY(-2px);
+}
+
+.message-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.message-card__author {
+  font-weight: 600;
+  color: var(--gold-light);
+  font-size: 0.95rem;
+}
+
+.message-card__time {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.message-card__content {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+/* ---- 加载更多 ---- */
+.load-more {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.load-more__btn {
+  background: transparent;
+  border: 1px solid var(--border-card);
+  color: var(--gold);
+  padding: 8px 28px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.load-more__btn:hover {
+  background: rgba(212, 168, 83, 0.1);
+}
+
+/* ---- 空状态 ---- */
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+  font-size: 0.95rem;
+}
+
+/* ---- Footer ---- */
+.footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  margin-top: auto;
+  padding-top: 60px;
+  letter-spacing: 0.04em;
+}
+
+/* ---- 动画 ---- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-30px) rotate(8deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes particleDrift {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(40px) scale(0.3);
+    opacity: 0;
+  }
+}
