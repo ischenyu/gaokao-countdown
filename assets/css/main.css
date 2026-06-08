@@ -1,6 +1,6 @@
 /* ============================================================
    高考倒计时 — 主样式表
-   设计基调：Bing 壁纸背景 + 毛玻璃卡片 + 金色点缀
+   设计基调：Bing 壁纸背景 + 毛玻璃卡片 + 蓝色点缀
    ============================================================ */
 
 /* ---- CSS 变量 ---- */
@@ -8,12 +8,12 @@
   --bg-deep: #07071a;
   --bg-glass: rgba(255, 255, 255, 0.05);
   --bg-glass-strong: rgba(255, 255, 255, 0.08);
-  --border-glass: rgba(212, 168, 83, 0.15);
-  --border-glass-hover: rgba(212, 168, 83, 0.30);
-  --gold: #d4a853;
-  --gold-light: #f0d070;
-  --gold-dim: #a08040;
-  --gold-glow: rgba(212, 168, 83, 0.15);
+  --border-glass: rgba(59, 130, 246, 0.18);
+  --border-glass-hover: rgba(59, 130, 246, 0.35);
+  --primary: #3b82f6;
+  --primary-light: #60a5fa;
+  --primary-dim: #2563eb;
+  --primary-glow: rgba(59, 130, 246, 0.15);
   --text-primary: #f0ede8;
   --text-secondary: #b0aca5;
   --text-muted: #6b6760;
@@ -51,7 +51,7 @@ body {
 }
 
 a {
-  color: var(--gold);
+  color: var(--primary);
   text-decoration: none;
 }
 
@@ -63,15 +63,12 @@ a {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 168, 83, 0.2);
+  background: rgba(59, 130, 246, 0.2);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 168, 83, 0.35);
+  background: rgba(59, 130, 246, 0.35);
 }
-
-/* ---- 背景层 (由 ParticleBackground 组件接管) ---- */
-/* 仅保留站位，组件内自带 Bing 壁纸 + 叠加层 */
 
 /* ---- 主内容层 ---- */
 .main-content {
@@ -94,13 +91,13 @@ a {
 .hero__title {
   font-family: var(--font-serif);
   font-size: clamp(3rem, 8vw, 5.5rem);
-  background: linear-gradient(135deg, #f0d070 0%, #d4a853 40%, #c89840 70%, #a08040 100%);
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 40%, #2563eb 70%, #1d4ed8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.08em;
   line-height: 1.3;
-  filter: drop-shadow(0 2px 12px rgba(212, 168, 83, 0.2));
+  filter: drop-shadow(0 2px 12px rgba(59, 130, 246, 0.2));
 }
 
 .hero__subtitle {
@@ -136,7 +133,7 @@ a {
   border-color: var(--border-glass-hover);
   background: var(--bg-glass-strong);
   box-shadow: var(--shadow-glass),
-              0 0 60px rgba(212, 168, 83, 0.06),
+              0 0 60px var(--primary-glow),
               inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
@@ -150,11 +147,11 @@ a {
   font-family: var(--font-serif);
   font-size: clamp(4.5rem, 15vw, 9rem);
   font-weight: 700;
-  color: var(--gold-light);
+  color: var(--primary-light);
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 40px rgba(240, 208, 112, 0.2),
-               0 0 80px rgba(212, 168, 83, 0.1);
+  text-shadow: 0 0 40px rgba(96, 165, 250, 0.25),
+               0 0 80px rgba(59, 130, 246, 0.12);
   letter-spacing: 0.04em;
   animation: countPulse 2s ease-in-out infinite;
 }
@@ -162,7 +159,7 @@ a {
 .countdown-days__label {
   font-family: var(--font-serif);
   font-size: clamp(1.2rem, 3.5vw, 1.8rem);
-  color: var(--gold-dim);
+  color: var(--primary-dim);
   margin-top: 4px;
   letter-spacing: 0.25em;
 }
@@ -175,7 +172,7 @@ a {
   background: linear-gradient(
     90deg,
     transparent,
-    var(--gold-dim),
+    var(--primary-dim),
     transparent
   );
 }
@@ -215,10 +212,10 @@ a {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 6vw, 3.8rem);
   font-weight: 700;
-  color: var(--gold-light);
+  color: var(--primary-light);
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 20px rgba(240, 208, 112, 0.15);
+  text-shadow: 0 0 20px rgba(96, 165, 250, 0.18);
 }
 
 .countdown-sub-item__label {
@@ -241,12 +238,12 @@ a {
 }
 
 .countdown-date strong {
-  color: var(--gold-light);
+  color: var(--primary-light);
   font-weight: 600;
 }
 
 .countdown-date--today {
-  color: var(--gold-light);
+  color: var(--primary-light);
   font-size: 1.3rem;
 }
 
@@ -262,7 +259,7 @@ a {
 .board-section__title {
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  color: var(--gold);
+  color: var(--primary);
   text-align: center;
   margin-bottom: 36px;
   letter-spacing: 0.1em;
@@ -282,7 +279,7 @@ a {
   display: block;
   width: 48px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
   margin: 12px auto 0;
   border-radius: 1px;
 }
@@ -304,7 +301,7 @@ a {
   border-color: var(--border-glass-hover);
   background: var(--bg-glass-strong);
   box-shadow: var(--shadow-glass),
-              0 0 40px rgba(212, 168, 83, 0.05);
+              0 0 40px var(--primary-glow);
 }
 
 .message-form__row {
@@ -336,9 +333,9 @@ a {
 
 .message-form__input:focus,
 .message-form__textarea:focus {
-  border-color: var(--gold-dim);
+  border-color: var(--primary-dim);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.08);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.10);
 }
 
 .message-form__textarea {
@@ -355,10 +352,10 @@ a {
 .message-form__submit {
   width: 100%;
   padding: 14px 0;
-  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  background: linear-gradient(135deg, var(--primary-dim), var(--primary));
   border: none;
   border-radius: var(--radius-sm);
-  color: #1a1a1a;
+  color: #ffffff;
   font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
@@ -369,7 +366,7 @@ a {
 .message-form__submit:hover:not(:disabled) {
   opacity: 0.92;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 168, 83, 0.25);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
 }
 
 .message-form__submit:active:not(:disabled) {
@@ -422,7 +419,7 @@ a {
   left: 0;
   width: 3px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, var(--gold-dim), transparent);
+  background: linear-gradient(180deg, transparent, var(--primary-dim), transparent);
   border-radius: 3px 0 0 3px;
   opacity: 0;
   transition: opacity 0.3s;
@@ -433,7 +430,7 @@ a {
   background: var(--bg-glass-strong);
   transform: translateY(-3px);
   box-shadow: var(--shadow-glass),
-              0 0 20px rgba(212, 168, 83, 0.05);
+              0 0 20px var(--primary-glow);
 }
 
 .message-card:hover::before {
@@ -449,7 +446,7 @@ a {
 
 .message-card__author {
   font-weight: 600;
-  color: var(--gold-light);
+  color: var(--primary-light);
   font-size: 0.95rem;
 }
 
@@ -475,7 +472,7 @@ a {
 .load-more__btn {
   background: var(--bg-glass);
   border: 1px solid var(--border-glass);
-  color: var(--gold);
+  color: var(--primary);
   padding: 10px 32px;
   border-radius: 24px;
   cursor: pointer;
@@ -488,7 +485,7 @@ a {
 .load-more__btn:hover {
   background: var(--bg-glass-strong);
   border-color: var(--border-glass-hover);
-  color: var(--gold-light);
+  color: var(--primary-light);
   transform: translateY(-1px);
 }
 
@@ -544,7 +541,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--gold);
+  color: var(--primary);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
@@ -552,7 +549,7 @@ a {
 }
 
 .footer__dev-link:hover {
-  color: var(--gold-light);
+  color: var(--primary-light);
   transform: translateY(-1px);
 }
 
@@ -585,7 +582,7 @@ a {
 }
 
 .footer__repo-link:hover {
-  color: var(--gold);
+  color: var(--primary);
   border-color: var(--border-glass);
   background: var(--bg-glass-strong);
   transform: translateY(-1px);
@@ -602,12 +599,12 @@ a {
    ================================================================ */
 @keyframes countPulse {
   0%, 100% {
-    text-shadow: 0 0 40px rgba(240, 208, 112, 0.2),
-                 0 0 80px rgba(212, 168, 83, 0.1);
+    text-shadow: 0 0 40px rgba(96, 165, 250, 0.25),
+                 0 0 80px rgba(59, 130, 246, 0.12);
   }
   50% {
-    text-shadow: 0 0 60px rgba(240, 208, 112, 0.3),
-                 0 0 120px rgba(212, 168, 83, 0.15);
+    text-shadow: 0 0 60px rgba(96, 165, 250, 0.35),
+                 0 0 120px rgba(59, 130, 246, 0.18);
   }
 }
 

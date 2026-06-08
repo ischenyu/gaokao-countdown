@@ -5,7 +5,7 @@
       class="bing-bg__image"
       :style="{ backgroundImage: `url(${bgUrl})` }"
     ></div>
-    <!-- 暗色叠加层, 保证文字可读性 -->
+    <!-- 蓝调暗色叠加层, 保证文字可读性 -->
     <div class="bing-bg__overlay"></div>
     <!-- 底部渐隐 — 让 footer 区域更柔和 -->
     <div class="bing-bg__vignette"></div>
@@ -15,10 +15,9 @@
 <script setup lang="ts">
 /**
  * Bing 每日壁纸背景组件。
- * 替代之前的粒子背景，使用高清每日壁纸 + 毛玻璃叠加层。
+ * 替代之前的粒子背景，使用高清每日壁纸 + 蓝调毛玻璃叠加层。
  */
 
-// 多个 Bing 壁纸源，轮流 fallback
 const bgUrl = 'https://bing.img.run/1920x1080.php';
 </script>
 
@@ -36,7 +35,7 @@ const bgUrl = 'https://bing.img.run/1920x1080.php';
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #07071a; /* fallback */
+  background-color: #0a0e24; /* fallback — 冷调深蓝 */
   filter: blur(12px) brightness(0.85);
   transition: background-image 0.8s ease;
 }
@@ -46,9 +45,9 @@ const bgUrl = 'https://bing.img.run/1920x1080.php';
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(7, 7, 26, 0.55) 0%,
-    rgba(7, 7, 26, 0.40) 50%,
-    rgba(7, 7, 26, 0.55) 100%
+    rgba(10, 14, 36, 0.60) 0%,
+    rgba(10, 14, 36, 0.45) 50%,
+    rgba(10, 14, 36, 0.60) 100%
   );
 }
 
@@ -58,7 +57,7 @@ const bgUrl = 'https://bing.img.run/1920x1080.php';
   background: radial-gradient(
     ellipse at center,
     transparent 50%,
-    rgba(7, 7, 26, 0.3) 100%
+    rgba(10, 14, 36, 0.35) 100%
   );
   pointer-events: none;
 }
