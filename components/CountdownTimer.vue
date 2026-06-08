@@ -3,25 +3,32 @@
     <div v-if="loading" class="countdown-loading">⏳</div>
     <template v-else>
       <div class="countdown-glass">
-        <div class="countdown-grid">
-          <div class="countdown-item">
-            <div class="countdown-item__number">{{ pad(totalDays) }}</div>
-            <div class="countdown-item__label">天</div>
+        <!-- 天 — 单独一行，大号展示 -->
+        <div class="countdown-days">
+          <div class="countdown-days__number">{{ pad(totalDays) }}</div>
+          <div class="countdown-days__label">天</div>
+        </div>
+
+        <!-- 装饰分隔线 -->
+        <div class="countdown-divider"></div>
+
+        <!-- 时 · 分 · 秒 -->
+        <div class="countdown-sub-grid">
+          <div class="countdown-sub-item">
+            <div class="countdown-sub-item__number">{{ pad(hours) }}</div>
+            <div class="countdown-sub-item__label">时</div>
           </div>
-          <div class="countdown-item">
-            <div class="countdown-item__number">{{ pad(hours) }}</div>
-            <div class="countdown-item__label">时</div>
+          <div class="countdown-sub-item">
+            <div class="countdown-sub-item__number">{{ pad(minutes) }}</div>
+            <div class="countdown-sub-item__label">分</div>
           </div>
-          <div class="countdown-item">
-            <div class="countdown-item__number">{{ pad(minutes) }}</div>
-            <div class="countdown-item__label">分</div>
-          </div>
-          <div class="countdown-item">
-            <div class="countdown-item__number">{{ pad(seconds) }}</div>
-            <div class="countdown-item__label">秒</div>
+          <div class="countdown-sub-item">
+            <div class="countdown-sub-item__number">{{ pad(seconds) }}</div>
+            <div class="countdown-sub-item__label">秒</div>
           </div>
         </div>
       </div>
+
       <p v-if="isToday" class="countdown-date countdown-date--today">
         🎉 就是今天！祝所有考生金榜题名！
       </p>

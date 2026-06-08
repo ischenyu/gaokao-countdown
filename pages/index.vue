@@ -1,10 +1,9 @@
 <template>
-  <!-- 粒子背景 -->
+  <!-- Bing 每日壁纸背景 -->
   <ParticleBackground />
 
   <!-- 主内容 -->
   <main class="main-content">
-    <!-- 标题 -->
     <!-- 标题区 -->
     <header class="hero">
       <h1 class="hero__title">高考倒计时</h1>
