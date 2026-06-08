@@ -74,7 +74,7 @@ function initRecaptcha() {
     // 脚本还没加载完，轮询等
     let attempts = 0;
     const interval = setInterval(() => {
-      if (window.grecptcha) {
+      if (window.grecaptcha) {
         clearInterval(interval);
         doRender();
       } else if (++attempts >= 30) {

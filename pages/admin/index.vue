@@ -101,8 +101,11 @@ async function handleDelete(msg: Message) {
 }
 
 async function handleLogout() {
-  // 清除 cookie 是 HttpOnly 的，前端无法直接删除。
-  // 最简单的方式：发一个不带 token 的请求触发 401，然后跳转。
+  try {
+    await $fetch('/api/admin/logout', { method: 'POST' });
+  } catch {
+    // ignore
+  }
   await navigateTo('/admin/login');
 }
 
