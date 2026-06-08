@@ -1,6 +1,6 @@
 /**
  * 高考倒计时 composable。
- * 客户端每秒轮询 /api/countdown，返回响应式倒计时数据。
+ * 首次加载时获取目标时间戳，之后客户端本地每秒更新。
  */
 export function useCountdown() {
   const totalDays = ref(0);
@@ -11,26 +11,41 @@ export function useCountdown() {
   const isToday = ref(false);
   const loading = ref(true);
 
+  let targetTimestamp = 0;
   let timer: ReturnType<typeof setInterval> | null = null;
 
-  async function fetchCountdown() {
+  function tick() {
+    if (!targetTimestamp) return;
+    const now = Date.now();
+    const diffMs = targetTimestamp - now;
+
+    if (diffMs <= 0) {
+      totalDays.value = 0;
+      hours.value = 0;
+      minutes.value = 0;
+      seconds.value = 0;
+      isToday.value = true;
+      return;
+    }
+
+    totalDays.value = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    hours.value = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    minutes.value = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    seconds.value = Math.floor((diffMs % (1000 * 60)) / 1000);
+    isToday.value = false;
+  }
+
+  async function fetchTargetDate() {
     try {
       const data = await $fetch<{
-        totalDays: number;
-        hours: number;
-        minutes: number;
-        seconds: number;
+        targetTimestamp: number;
         gaokaoLabel: string;
-        isToday: boolean;
       }>('/api/countdown');
-      totalDays.value = data.totalDays;
-      hours.value = data.hours;
-      minutes.value = data.minutes;
-      seconds.value = data.seconds;
+      targetTimestamp = data.targetTimestamp;
       gaokaoLabel.value = data.gaokaoLabel;
-      isToday.value = data.isToday;
+      tick();
     } catch (err) {
-      console.error('获取倒计时失败:', err);
+      console.error('获取高考日期失败:', err);
     } finally {
       loading.value = false;
     }
@@ -38,18 +53,13 @@ export function useCountdown() {
 
   // 客户端初始化
   onMounted(() => {
-    fetchCountdown();
-    timer = setInterval(fetchCountdown, 1000);
+    fetchTargetDate();
+    timer = setInterval(tick, 1000);
   });
 
   onUnmounted(() => {
     if (timer) clearInterval(timer);
   });
-
-  // SSR / SSG 首屏数据
-  if (import.meta.server) {
-    // 服务端不做轮询，由客户端接管
-  }
 
   return {
     totalDays,
