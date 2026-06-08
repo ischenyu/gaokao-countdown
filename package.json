@@ -7,7 +7,14 @@
     "dev": "nuxt dev",
     "build": "nuxt build",
     "preview": "nuxt preview",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "pm2:start": "pm2 start ecosystem.config.cjs",
+    "pm2:stop": "pm2 stop gaokao-countdown",
+    "pm2:restart": "pm2 restart gaokao-countdown",
+    "pm2:delete": "pm2 delete gaokao-countdown",
+    "pm2:logs": "pm2 logs gaokao-countdown",
+    "pm2:status": "pm2 status gaokao-countdown",
+    "deploy": "npm run build && npm run pm2:restart || npm run pm2:start"
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.2",

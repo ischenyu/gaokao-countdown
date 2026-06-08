@@ -1,5 +1,4 @@
 {
-  "framework": "nuxt",
   "build": {
     "command": "npm run build",
     "output": ".output/public",

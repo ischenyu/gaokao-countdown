@@ -1,16 +1,3 @@
-import { createRequire } from 'node:module';
-
-const _require = createRequire(import.meta.url);
-
-function hasEdgeoneModule(): boolean {
-  try {
-    _require.resolve('@edgeone/nuxt-pages');
-    return true;
-  } catch {
-    return false;
-  }
-}
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
@@ -18,9 +5,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   css: ['~/assets/css/main.css'],
-
-  // EdgeOne Pages 构建环境预装此模块；本地 dev 跳过
-  modules: hasEdgeoneModule() ? ['@edgeone/nuxt-pages'] : [],
 
   nitro: {
     preset: 'node-server',
