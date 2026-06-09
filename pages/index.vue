@@ -6,8 +6,8 @@
   <main class="main-content">
     <!-- 标题区 -->
     <header class="hero">
-      <h1 class="hero__title">高考倒计时</h1>
-      <p class="hero__subtitle">以梦为马 · 不负韶华</p>
+      <h1 class="hero__title">🧚 高考倒计时</h1>
+      <p class="hero__subtitle">派蒙为你加油 · 以梦为马 · 不负韶华 💫</p>
     </header>
 
     <!-- 倒计时 / 考后庆祝 -->
@@ -19,8 +19,8 @@
     <!-- 留言板 -->
     <section class="board-section">
       <h2 class="board-section__title">
-        <span class="board-section__icon">💬</span>
-        留言祝福
+        <span class="board-section__icon">🧚</span>
+        派蒙的祝福留言板
       </h2>
       <MessageForm @submitted="onMessageSubmitted" />
       <MessageBoard ref="boardRef" />

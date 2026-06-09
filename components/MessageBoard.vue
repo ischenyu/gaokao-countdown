@@ -3,7 +3,7 @@
     <div v-if="loading" class="empty-state">加载留言中…</div>
 
     <div v-else-if="messages.length === 0" class="empty-state">
-      还没有留言，快来写下第一条祝福吧 ✨
+      还没有留言，快来写下第一条祝福吧 🧚✨
     </div>
 
     <div v-else class="message-list">

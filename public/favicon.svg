@@ -1,4 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#0a0a1a"/>
-  <text x="32" y="44" text-anchor="middle" font-size="36" font-weight="bold" fill="#d4a853" font-family="serif">倒</text>
+  <rect width="64" height="64" rx="14" fill="#0a0e24"/>
+  
+  <!-- 派蒙光环（头顶金色圆环 + 星星） -->
+  <ellipse cx="32" cy="16" rx="14" ry="5" fill="#f0d050" opacity="0.9"/>
+  <ellipse cx="32" cy="16" rx="12" ry="3.5" fill="#0a0e24"/>
+  
+  <!-- 星星 -->
+  <polygon points="32,8 33.5,13 39,13 34.8,16 36.5,21 32,17.5 27.5,21 29.2,16 25,13 30.5,13" fill="#f0d050"/>
+  
+  <!-- 派蒙头部（圆形） -->
+  <circle cx="32" cy="27" r="10" fill="#ffeedd"/>
+  
+  <!-- 眼睛 -->
+  <circle cx="28" cy="27" r="2.5" fill="#3b82f6"/>
+  <circle cx="36" cy="27" r="2.5" fill="#3b82f6"/>
+  <circle cx="28.5" cy="26.5" r="0.8" fill="#fff"/>
+  <circle cx="36.5" cy="26.5" r="0.8" fill="#fff"/>
+  
+  <!-- 笑容 -->
+  <path d="M28 31 Q32 35 36 31" stroke="#cc8866" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  
+  <!-- 身体（小裙子） -->
+  <path d="M22 36 Q22 44 18 54 L46 54 Q42 44 42 36 Z" fill="#e8e0f0"/>
+  <path d="M24 38 L40 38" stroke="#3b82f6" stroke-width="1.5"/>
+  
+  <!-- 披风/飘带 -->
+  <path d="M22 36 Q16 40 14 48 Q16 44 20 40" fill="#c8b8e0" opacity="0.7"/>
+  <path d="M42 36 Q48 40 50 48 Q48 44 44 40" fill="#c8b8e0" opacity="0.7"/>
 </svg>

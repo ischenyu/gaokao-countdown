@@ -6,11 +6,11 @@
     <template v-else-if="isAfterGaokao">
       <div class="countdown-glass countdown-glass--celebrate">
         <div class="celebrate">
-          <div class="celebrate__emoji">🎉🎓🎉</div>
+          <div class="celebrate__emoji">🧚🎓🧚</div>
           <div class="celebrate__title">高考已结束</div>
-          <div class="celebrate__subtitle">披星戴月的路，终将繁花满地</div>
+          <div class="celebrate__subtitle">派蒙祝所有旅行者金榜题名！🌟</div>
           <div class="celebrate__msg">
-            祝所有考生金榜题名，前程似锦！
+            这一路的冒险，终于迎来了最美的风景 ✨
           </div>
           <div class="celebrate__year">{{ gaokaoLabel }}</div>
         </div>
@@ -47,7 +47,7 @@
       </div>
 
       <p v-if="isToday" class="countdown-date countdown-date--today">
-        🎉 就是今天！祝所有考生金榜题名！
+        🧚 就是今天！派蒙为你加油，金榜题名！🌟
       </p>
       <p v-else class="countdown-date">
         距离 <strong>{{ gaokaoLabel }}</strong> 还有
