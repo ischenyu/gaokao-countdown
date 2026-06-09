@@ -20,7 +20,7 @@
         v-model="content"
         class="message-form__textarea"
         maxlength="1000"
-        placeholder="写下你对考生的祝福…派蒙会帮你加油的 ✨"
+        placeholder="写下你对考生的祝福…"
         required
       ></textarea>
     </div>

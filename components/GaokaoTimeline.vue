@@ -1,8 +1,8 @@
 <template>
   <section class="timeline-section">
     <h2 class="board-section__title">
-      <span class="board-section__icon">🧚</span>
-     备考之旅 · 派蒙陪你走过
+      <span class="board-section__icon">📅</span>
+      备考时间轴
     </h2>
 
     <div class="timeline">

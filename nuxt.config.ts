@@ -27,13 +27,13 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: '🧚 高考倒计时 — 派蒙为你加油',
+      title: '高考倒计时 — 以梦为马，不负韶华',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: '🧚 派蒙陪伴的高考倒计时，以梦为马，不负韶华。留言为考生加油！',
+          content: '高考倒计时，记录每一天的努力。留言为考生加油！',
         },
         { name: 'theme-color', content: '#0a0e24' },
       ],
