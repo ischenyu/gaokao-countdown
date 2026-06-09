@@ -11,8 +11,8 @@ export default defineEventHandler(async (event) => {
   const offset = (page - 1) * pageSize;
 
   const [rows, countResult] = await Promise.all([
-    query<{ id: string; author: string; content: string; created_at: string }>(
-      `SELECT id, author, content, created_at
+    query<{ id: string; author: string; content: string; likes: number; created_at: string }>(
+      `SELECT id, author, content, likes, created_at
        FROM messages
        WHERE approved = TRUE
        ORDER BY created_at DESC

@@ -17,9 +17,10 @@ export default defineEventHandler(async (event) => {
       author: string;
       content: string;
       approved: boolean;
+      likes: number;
       created_at: string;
     }>(
-      `SELECT id, author, content, approved, created_at
+      `SELECT id, author, content, approved, likes, created_at
        FROM messages
        ORDER BY created_at DESC
        LIMIT $1 OFFSET $2`,

@@ -10,8 +10,11 @@
       <p class="hero__subtitle">以梦为马 · 不负韶华</p>
     </header>
 
-    <!-- 倒计时 -->
+    <!-- 倒计时 / 考后庆祝 -->
     <CountdownTimer />
+
+    <!-- 备考时间轴 -->
+    <GaokaoTimeline />
 
     <!-- 留言板 -->
     <section class="board-section">

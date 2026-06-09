@@ -58,20 +58,21 @@ async function handleLogin() {
 }
 
 .admin-login-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
   padding: 40px 32px;
   width: 100%;
   max-width: 380px;
   backdrop-filter: blur(12px);
-  box-shadow: var(--shadow-card);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-glass);
   text-align: center;
 }
 
 .admin-login__title {
   font-family: var(--font-serif);
-  color: var(--gold);
+  color: var(--primary-light);
   font-size: 1.4rem;
   margin-bottom: 24px;
 }
@@ -89,7 +90,7 @@ async function handleLogin() {
 }
 
 .admin-login__input:focus {
-  border-color: var(--gold-dim);
+  border-color: var(--primary-dim);
 }
 
 .admin-login__error {
@@ -101,10 +102,10 @@ async function handleLogin() {
 .admin-login__btn {
   width: 100%;
   padding: 12px 0;
-  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  background: linear-gradient(135deg, var(--primary-dim), var(--primary));
   border: none;
   border-radius: var(--radius-sm);
-  color: #1a1a1a;
+  color: #ffffff;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;

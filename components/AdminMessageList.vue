@@ -5,42 +5,52 @@
     暂无留言。
   </div>
 
-  <div v-else class="admin-message-list">
-    <div
-      v-for="msg in messages"
-      :key="msg.id"
-      class="admin-message-card"
-      :class="{ 'admin-message-card--pending': !msg.approved }"
-    >
-      <div class="admin-message-card__body">
-        <div class="admin-message-card__meta">
-          <strong>{{ msg.author }}</strong>
-          <span class="admin-message-card__time">{{ formatTime(msg.created_at) }}</span>
-          <span
-            class="admin-message-card__status"
-            :class="msg.approved ? 'is-approved' : 'is-pending'"
-          >
-            {{ msg.approved ? '✅ 已审核' : '⏳ 待审核' }}
-          </span>
+  <template v-else>
+    <!-- 统计栏 -->
+    <div class="admin-stats">
+      <span class="admin-stats__item">📊 共 {{ messages.length }} 条</span>
+      <span class="admin-stats__item">❤️ {{ totalLikes }} 个赞</span>
+    </div>
+
+    <!-- 列表 -->
+    <div class="admin-message-list">
+      <div
+        v-for="msg in messages"
+        :key="msg.id"
+        class="admin-message-card"
+        :class="{ 'admin-message-card--pending': !msg.approved }"
+      >
+        <div class="admin-message-card__body">
+          <div class="admin-message-card__meta">
+            <strong>{{ msg.author }}</strong>
+            <span class="admin-message-card__time">{{ formatTime(msg.created_at) }}</span>
+            <span class="admin-message-card__likes">❤️ {{ msg.likes }}</span>
+            <span
+              class="admin-message-card__status"
+              :class="msg.approved ? 'is-approved' : 'is-pending'"
+            >
+              {{ msg.approved ? '✅ 已审核' : '⏳ 待审核' }}
+            </span>
+          </div>
+          <p class="admin-message-card__content">{{ msg.content }}</p>
         </div>
-        <p class="admin-message-card__content">{{ msg.content }}</p>
-      </div>
-      <div class="admin-message-card__actions">
-        <button
-          class="admin-btn admin-btn--toggle"
-          @click="$emit('toggle', msg)"
-        >
-          {{ msg.approved ? '隐藏' : '通过' }}
-        </button>
-        <button
-          class="admin-btn admin-btn--delete"
-          @click="$emit('remove', msg)"
-        >
-          删除
-        </button>
+        <div class="admin-message-card__actions">
+          <button
+            class="admin-btn admin-btn--toggle"
+            @click="$emit('toggle', msg)"
+          >
+            {{ msg.approved ? '隐藏' : '通过' }}
+          </button>
+          <button
+            class="admin-btn admin-btn--delete"
+            @click="$emit('remove', msg)"
+          >
+            删除
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script setup lang="ts">
@@ -49,13 +59,18 @@ interface Message {
   author: string;
   content: string;
   approved: boolean;
+  likes: number;
   created_at: string;
 }
 
-defineProps<{
+const props = defineProps<{
   messages: Message[];
   loading: boolean;
 }>();
+
+const totalLikes = computed(() =>
+  props.messages.reduce((sum, m) => sum + (m.likes || 0), 0),
+);
 
 defineEmits<{
   toggle: [msg: Message];
@@ -76,6 +91,23 @@ function formatTime(iso: string) {
   padding: 40px;
 }
 
+.admin-stats {
+  display: flex;
+  gap: 16px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.admin-stats__item {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
 .admin-message-list {
   display: flex;
   flex-direction: column;
@@ -83,7 +115,7 @@ function formatTime(iso: string) {
 }
 
 .admin-message-card {
-  background: var(--bg-card);
+  background: var(--bg-glass);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   padding: 16px 18px;
@@ -92,6 +124,8 @@ function formatTime(iso: string) {
   align-items: flex-start;
   gap: 12px;
   flex-wrap: wrap;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .admin-message-card--pending {
@@ -115,6 +149,11 @@ function formatTime(iso: string) {
 .admin-message-card__time {
   color: var(--text-muted);
   font-size: 0.8rem;
+}
+
+.admin-message-card__likes {
+  font-size: 0.78rem;
+  color: rgba(96, 165, 250, 0.7);
 }
 
 .admin-message-card__status {
@@ -155,12 +194,12 @@ function formatTime(iso: string) {
 }
 
 .admin-btn--toggle {
-  background: rgba(212, 168, 83, 0.15);
-  color: var(--gold);
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--primary-light);
 }
 
 .admin-btn--toggle:hover {
-  background: rgba(212, 168, 83, 0.3);
+  background: rgba(59, 130, 246, 0.25);
 }
 
 .admin-btn--delete {

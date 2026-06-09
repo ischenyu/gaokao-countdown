@@ -137,7 +137,7 @@ onMounted(fetchMessages);
 
 .admin-header__title {
   font-family: var(--font-serif);
-  color: var(--gold);
+  color: var(--primary-light);
   font-size: 1.5rem;
 }
 
@@ -173,7 +173,7 @@ onMounted(fetchMessages);
 
 .admin-filter__link {
   font-size: 0.9rem;
-  color: var(--gold);
+  color: var(--primary);
 }
 
 .admin-pagination {
@@ -185,18 +185,20 @@ onMounted(fetchMessages);
 }
 
 .admin-pagination__btn {
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
-  color: var(--gold);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  color: var(--primary);
   padding: 8px 20px;
   border-radius: 16px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: background 0.2s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .admin-pagination__btn:hover:not(:disabled) {
-  background: rgba(212, 168, 83, 0.1);
+  background: rgba(59, 130, 246, 0.1);
 }
 
 .admin-pagination__btn:disabled {

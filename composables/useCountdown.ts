@@ -9,6 +9,7 @@ export function useCountdown() {
   const seconds = ref(0);
   const gaokaoLabel = ref('');
   const isToday = ref(false);
+  const isAfterGaokao = ref(false);
   const loading = ref(true);
 
   let targetTimestamp = 0;
@@ -25,6 +26,7 @@ export function useCountdown() {
       minutes.value = 0;
       seconds.value = 0;
       isToday.value = true;
+      isAfterGaokao.value = true;
       return;
     }
 
@@ -33,6 +35,7 @@ export function useCountdown() {
     minutes.value = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
     seconds.value = Math.floor((diffMs % (1000 * 60)) / 1000);
     isToday.value = false;
+    isAfterGaokao.value = false;
   }
 
   async function fetchTargetDate() {
@@ -51,7 +54,6 @@ export function useCountdown() {
     }
   }
 
-  // 客户端初始化
   onMounted(() => {
     fetchTargetDate();
     timer = setInterval(tick, 1000);
@@ -68,6 +70,7 @@ export function useCountdown() {
     seconds,
     gaokaoLabel,
     isToday,
+    isAfterGaokao,
     loading,
   };
 }
