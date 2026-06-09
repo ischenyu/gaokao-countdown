@@ -94,24 +94,24 @@ const events = computed<TimelineEvent[]>(() => {
       d: day === 7 ? 27 : Math.min(28, day),
       desc: '百日冲刺，誓言铿锵。最后的百日，全力以赴！',
     },
-    {
-      label: '第一次模拟考试',
-      m: Math.max(1, month - 3),
-      d: Math.min(28, day + 10),
-      desc: '一模是高考的"预演"，检验一轮复习成果，调整备考方向。',
-    },
-    {
-      label: '第二次模拟考试',
-      m: Math.max(1, month - 2),
-      d: Math.min(28, day - 5),
-      desc: '二模难度接近高考，查漏补缺的关键节点。',
-    },
-    {
-      label: '第三次模拟考试',
-      m: Math.max(1, month - 1),
-      d: Math.min(28, day - 10),
-      desc: '三模相对简单，旨在帮助建立考前信心。',
-    },
+    // {
+    //   label: '第一次模拟考试',
+    //   m: Math.max(1, month - 3),
+    //   d: Math.min(28, day + 10),
+    //   desc: '一模是高考的"预演"，检验一轮复习成果，调整备考方向。',
+    // },
+    // {
+    //   label: '第二次模拟考试',
+    //   m: Math.max(1, month - 2),
+    //   d: Math.min(28, day - 5),
+    //   desc: '二模难度接近高考，查漏补缺的关键节点。',
+    // },
+    // {
+    //   label: '第三次模拟考试',
+    //   m: Math.max(1, month - 1),
+    //   d: Math.min(28, day - 10),
+    //   desc: '三模相对简单，旨在帮助建立考前信心。',
+    // },
     {
       label: '🎯 高考',
       m: month,
